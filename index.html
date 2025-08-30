@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body {
+                background-color: rgb(224, 218, 218);
+                padding: 50px;
+            }
+
+            #canvas {
+                background-color: white;
+            }
+
+            #label {
+                display: block;
+                background-color: rgb(224, 218, 218);
+                width: 500px;
+            }
+
+            #canvas2 {
+                background-color: white;
+            }
+            #label2 {
+                display: block;
+                background-color: lightyellow;
+                width: 500px;
+            }
+        </style>
+    
+    </head>
+    <body>
+        <h1>
+            Mandelbrot Set visualizer
+        </h1> 
+        <p>
+            The Mandelbrot Set is a fractal produced by iterating the function
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>f</mi><mn>c</mn></msub><mo>(</mo><msub><mi>z</mi><mrow><mn>i</mn><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo>
+                </mrow>
+                <mo>=</mo>
+                <mrow>
+                    <msup><mrow><msub>><mi>z</mi><mi>i</mi></msub></mrow><mn>2</mn></msup>
+                </mrow>
+                <mo>+</mo>
+                <mrow><mi>c</mi></mrow>
+            </math>
+            , over the complex plane, with the constant c being the point on the plane and
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <msub><mi>z</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn>
+            </math>
+            .
+        </p>
+        <p>
+            The Mandelbrot Set seen below iterates over the complex plane for 
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi></mrow>
+            </math>
+            for all
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mi>a</mi><mo>∈</mo><mo>[</mo><mn>-2</mn><mi>,</mi><mspace width="0.25em"></mspace><mn>2</mn><mo>]</mo></mrow>
+            </math>
+            and
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mi>b</mi><mo>∈</mo><mo>[</mo><mn>-2</mn><mi>,</mi><mspace width="0.25em"></mspace><mn>2</mn><mo>]</mo></mrow>
+            </math>
+            . Here, all points in the set are seen in black, meaning that regardless of the number of iterations performed,
+            the function never diverges to infinity. Otherwise the colors represent the number of iterations for a point to escape the set.
+
+        </p>
+
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <label id="label"></label>
+
+        <p>
+            The Mandelbrot set is actually an extension of the bifurcation map, produced by the logistic equation
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>f</mi><mo>(</mo><msub>
+                <mi>x</mi><mrow><mi>n</mi></mrow></msub><mo>)</mo><mo>=</mo><mi>r</mi><msub><mi>x</mi><mi>n</mi></msub>
+                <mo>(</mo><mn>1</mn><mo>-</mo><msub><mi>x</mi><mi>n</mi></msub><mo>)</mo>
+            </math>
+            with the parameter <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math>. This models how the
+            behavior of a dynamic system changes as an result of the parameter. This is commonly used in modeling population
+            dynamics and in chaos theory. It is also used in computer systems as a pseudorandom number generator.
+            As <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> increases, there is successive period doubling,
+            wherein the value of the function oscillates between 2 values, then 4 values, then 8 values and so on.
+        </p>
+        <p>
+            For <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>&lt;</mo><mn>3</mn></math>, there is
+            one attractor point, which bifurcates at <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>3</mn></math>.
+            Bifurcations occur until until <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>3.57</mn></math> after
+            which, the system divulges into chaos (though it is not always chaotic after this point).
+        </p>
+        <canvas id="canvas2" width="500" height="500"></canvas>
+        <label id="label2"></label>
+        <p>
+            Bifurcations reflect chaotic systems, wherein the behavior is highly sensitive to inital conditions and a small parameter change
+            causes a qualitative change in the system. Here, as <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> increases,
+            the value of the system, once at equilibrium, will diverge. For a small enough <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math>,
+            there is always an attractor, and thus the system is stable around one value. At <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>3.57</mn></math>,
+            there is periodic doubling, splitting the equlibrium into a stable cycle of 2, and as <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> increases,
+            doubling occurs again and again at an accelerating rate, eventually leading to a non-cyclic, chaotic system.
+        </p>
+        <p>Check out this cool <a href="https://upload.wikimedia.org/wikipedia/commons/8/8e/Buddhabrot_logistic_map_animation.gif" target="_blank"> 3d visualization</a> of their relationship!</p>
+
+        <script src="mandelbrot.js"></script>
+
+    </body>
+
+</html>
